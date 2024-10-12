@@ -44,7 +44,7 @@ Same members and methods as *BankAccount* class. In addition, *FixedDepositAccou
 
 - Methods
     - *withdraw()* and *deposit()* methods will not update the account's balance viz. they will perform a NOP (no operation)
-    - *getBalance()* should return the balance plsu the interest viz if interest is 3 and balance is 100, the *getBalance()* should return 103
+    - *getBalance()* should return the balance plus the interest viz if interest is 3 and balance is 100, the *getBalance()* should return 103
 
 - Constructor
     - The following are the constructors signature
