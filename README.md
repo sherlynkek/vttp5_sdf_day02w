@@ -2,7 +2,7 @@
 The objective of this workshop is to use object oriented techniques to model bank account
 
 # Workshop
-# Task 1
+## Task 1
 Write the following Java classes to model a bank account. The bank account should contain the following members and methods
 
 *BankAccount* class
@@ -27,7 +27,7 @@ Write the following Java classes to model a bank account. The bank account shoul
     - The first constructor has a single parameter which is the account holder's name. Initialize the balance to 0
     - The second constructor has 2 parameters; the first is the account holder's name and the second is the initial account balance.
 
-# Task 2
+## Task 2
 Write *FixedDepositAccount* class
 
 Same members and methods as *BankAccount* class. In addition, *FixedDepositAccount* has the following variation in members, methods and constructors
