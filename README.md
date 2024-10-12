@@ -18,9 +18,9 @@ Write the following Java classes to model a bank account. The bank account shoul
     account holder's name and account number are read only properties. They are set when this class is created and cannot be changed during the lifetime of the instance.
 
 - Methods
-    - *deposit* - deposit some amount into the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, thenyou should add the following "*deposit $100 at <date time>*" to transaction list
+    - *deposit* - deposit some amount into the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, thenyou should add the following "*deposit $100 at <'date time>*" to transaction list
     Deposits only accepts positive amount. If an incorrect amount is given or account is closed, throw an *IllegalArgumentException*.
-    - *withdraw* - withdraw some amount from the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, then you should add the following "*withdraw $100 at <date time>*" ti transaction list
+    - *withdraw* - withdraw some amount from the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, then you should add the following "*withdraw $100 at <'date time>*" ti transaction list
     Withdraw only accepts positive amount. If an incorrect amount is given or the account is closed, throw an *IllegalArgumentException*
 
 - Constructor
