@@ -19,8 +19,11 @@ Write the following Java classes to model a bank account. The bank account shoul
 
 - Methods
     - *deposit* - deposit some amount into the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, thenyou should add the following "*deposit $100 at <'date time>*" to transaction list
+
     Deposits only accepts positive amount. If an incorrect amount is given or account is closed, throw an *IllegalArgumentException*.
-    - *withdraw* - withdraw some amount from the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, then you should add the following "*withdraw $100 at <'date time>*" ti transaction list
+
+    - *withdraw* - withdraw some amount from the account. This operation should be added to the transactions list (above); for example, if $100 is added to the account, then you should add the following "*withdraw $100 at <'date time>*" to transaction list
+    
     Withdraw only accepts positive amount. If an incorrect amount is given or the account is closed, throw an *IllegalArgumentException*
 
 - Constructor
