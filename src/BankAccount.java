@@ -95,13 +95,51 @@ public class BankAccount {
     }
 
     public void setClosed(boolean isClosed) {
-        this.isClosed = isClosed;
+        
+        if (isClosed) {
+            ZoneId defaultZone = ZoneId.systemDefault();
+            this.createDate = Date.from(LocalDate.now().atStartOfDay(defaultZone).toInstant());
+
+            this.isClosed = isClosed;
+        }
     }
 
     public void setClosedDate(Date closedDate) {
         this.closedDate = closedDate;
     }
     
-    
+    public void deposit(float amount) {
+        System.out.println("How much are you depositing today");
+
+        if (!this.isClosed) {
+            if (amount > 0.00f) {
+                this.balance = this.balance + amount;
+
+                transactions.add("deposit amount $" + amount + "at" + LocalDate.now().toString());
+            }
+            else {
+                throw new IllegalArgumentException("Deposit amount cannot be less than $1");
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Account is closed. Transaction aborted");
+        }
+    }
+
+    public void withdraw(float amount) {
+        if (!this.isClosed) {
+            if (amount <= this.balance) {
+                this.balance = this.balance + amount;
+
+                transactions.add("withdraw amount $" + amount + "at" + LocalDate.now().toString());
+            }
+            else {
+                throw new IllegalArgumentException("Withdraw amount cannot be more than balance");
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Account is closed. Transaction aborted");
+        }
+    }
     
 }
