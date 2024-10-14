@@ -26,10 +26,9 @@ public class BankAccount {
         ZoneId defaultZone = ZoneId.systemDefault();
         this.createDate = Date.from(LocalDate.now().atStartOfDay(defaultZone).toInstant());
 
-        if(transactions == null) {
-            transactions = new ArrayList<>();
-        }
-
+        
+        transactions = new ArrayList<>();
+        
     }
 
     public BankAccount(String holderName, float balance) {
@@ -37,9 +36,7 @@ public class BankAccount {
         this.accNo = generateAccNo();
         this.balance = balance;
 
-        if(transactions == null) {
-            transactions = new ArrayList<>();
-        }
+        transactions = new ArrayList<>();
     }
 
     private String generateAccNo() {
@@ -50,11 +47,11 @@ public class BankAccount {
         Random random = new Random();
         String accNo = "";
 
-        for (int i = 0; accLengthNo < 10; i++) {
+        for (int i = 0; i < accLengthNo; i++) {
             int randomValue = startAsciiNo + (int) (random.nextFloat() * (endAsciiNo - startAsciiNo + 1));
-
             accNo = accNo + (char) randomValue;
         }
+        
         return accNo;
     }
 
@@ -96,12 +93,12 @@ public class BankAccount {
 
     public void setClosed(boolean isClosed) {
         
-        if (isClosed) {
+        if (isClosed && !this.isClosed) {
             ZoneId defaultZone = ZoneId.systemDefault();
-            this.createDate = Date.from(LocalDate.now().atStartOfDay(defaultZone).toInstant());
+            this.closedDate = Date.from(LocalDate.now().atStartOfDay(defaultZone).toInstant());
 
-            this.isClosed = isClosed;
         }
+        this.isClosed = isClosed;
     }
 
     public void setClosedDate(Date closedDate) {
@@ -109,16 +106,16 @@ public class BankAccount {
     }
     
     public void deposit(float amount) {
-        System.out.println("How much are you depositing today");
 
         if (!this.isClosed) {
             if (amount > 0.00f) {
                 this.balance = this.balance + amount;
+                this.balance += amount;
 
-                transactions.add("deposit amount $" + amount + "at" + LocalDate.now().toString());
+                transactions.add("deposit amount $" + amount + " at " + LocalDate.now().toString());
             }
             else {
-                throw new IllegalArgumentException("Deposit amount cannot be less than $1");
+                throw new IllegalArgumentException("Deposit amount must be greater than 0");
             }
         }
         else {
@@ -128,10 +125,10 @@ public class BankAccount {
 
     public void withdraw(float amount) {
         if (!this.isClosed) {
-            if (amount <= this.balance) {
-                this.balance = this.balance + amount;
+            if (amount > 0.00f && amount <= this.balance) {
+                this.balance = this.balance - amount;
 
-                transactions.add("withdraw amount $" + amount + "at" + LocalDate.now().toString());
+                transactions.add("withdraw amount $" + amount + " at " + LocalDate.now().toString());
             }
             else {
                 throw new IllegalArgumentException("Withdraw amount cannot be more than balance");
@@ -142,4 +139,14 @@ public class BankAccount {
         }
     }
     
+    @Override
+    public String toString() {
+        return "BankAccount {" + "holderName=' " + holderName + '\'' + ", accNo='" + accNo + '\'' +
+           ", balance=" + balance +
+           ", transactions=" + transactions +
+           ", isClosed=" + isClosed +
+           ", createDate=" + createDate +
+           ", closedDate=" + closedDate +
+           '}';
+    }
 }
