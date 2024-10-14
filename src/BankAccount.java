@@ -103,7 +103,7 @@ public class BankAccount {
     }
 
     public float getBalance() {
-        return balance;
+        return this.balance;
     }
 
     public List<String> getTransactions() {
